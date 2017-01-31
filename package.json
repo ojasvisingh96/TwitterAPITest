@@ -28,6 +28,7 @@
     "react-native-tcp": "^2.0.4",
     "react-native-udp": "^1.2.9",
     "readable-stream": "^1.0.33",
+    "realm": "^0.15.4",
     "stream-browserify": "^1.0.0",
     "timers-browserify": "^1.4.2",
     "tty-browserify": "0.0.0",

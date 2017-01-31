@@ -8,18 +8,16 @@ import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
-  Text,
   View,
-  Button,
-  Linking,
-  TextInput,
+  Text,
   Navigator
 } from 'react-native';
 
-//import './shim.js';
-//import OAuth from './config/oauth';
+
 import Root from './root';
 import Home from './home';
+
+const Realm = require('realm');
 
 class TestProject extends Component {
 
@@ -36,7 +34,7 @@ class TestProject extends Component {
       console.log('check');
       console.log(route.oauth_token);
       console.log(route.oauth_token_secret);
-      return <Home navigator = {navigator} oauth_token={route.oauth_token} oauth_token_secret={route.oauth_token_secret}/>
+      return <Home navigator = {navigator} oauth_token={route.oauth_token} oauth_token_secret={route.oauth_token_secret} screen_name={route.screen_name}/>
     }
 
   }
@@ -53,6 +51,28 @@ class TestProject extends Component {
       </View>
     );
   }
+ //  render() {
+ //
+ //   let realm = new Realm({
+ //     schema: [{name: 'Dog', properties: {name: 'string'}}]
+ //   });
+ //
+ //   realm.write(() => {
+ //     realm.create('Dog', {name: 'Rex'});
+ //     realm.deleteAll();
+ //   });
+ //
+ //  console.log(realm.objects('Dog'));
+ //
+ //   return (
+ //     <View style={styles.container}>
+ //       <Text style={styles.welcome}>
+ //         Count of Dogs in Realm: {realm.objects('Dog').length}
+ //       </Text>
+ //     </View>
+ //   );
+ // }
+
 }
 
 const styles = StyleSheet.create({

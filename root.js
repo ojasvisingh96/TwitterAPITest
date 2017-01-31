@@ -143,7 +143,7 @@ export default class Root extends Component {
         return res.formData();
       }
     }).then(function(re){
-      this.props.navigator.push({name : 'home', oauth_token : re._parts[0][1], oauth_token_secret : re._parts[1][1]});
+      this.props.navigator.push({name : 'home', oauth_token : re._parts[0][1], oauth_token_secret : re._parts[1][1], screen_name : re._parts[3][1]});
       console.log(re);
     }.bind(this))
     .catch(function(error) {
