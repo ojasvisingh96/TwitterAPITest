@@ -197,17 +197,19 @@ export default class Home extends Component {
         <TextInput
           onChangeText={(text) => this.setState({tweet : text})}
           style={{height: 40, borderColor: 'red', borderWidth: 1, margin : 10}}
-          numberOfLines = {3}
-          multiline = {true}
         />
+        <View style = {{padding:10}}>
         <Button
           title = 'Post Tweet'
           onPress = {this.onTweetPress}
         />
+        </View>
+        <View style = {{padding : 10}}>
         <Button
           title = 'Fetch Timeline'
           onPress = {this.onFetchPress}
         />
+        </View>
       </View>
       <ListView
         enableEmptySections={true}

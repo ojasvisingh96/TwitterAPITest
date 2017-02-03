@@ -161,30 +161,35 @@ export default class Root extends Component {
     console.log('did I reach here');
     return (
       <View style={styles.container}>
-      <Text style={styles.welcome}>
-      Welcome to React Native!
-      </Text>
-      <Text style={styles.instructions}>
-      To get started, edit index.android.js
-      </Text>
-      <Text style={styles.instructions}>
-      Double tap R on your keyboard to reload,{'\n'}
-      Shake or press menu button for dev menu{'\n'}
-      </Text>
-      <Button
-      onPress = {this.twitterLogin}
-      title='Sign in with Twitter'
-      color={this.state.buttonColor}
-      />
-      <TextInput
-      style={{height: 40, width : 150, borderColor: 'red', borderWidth: 1, margin : 10}}
-      onChangeText={(text) => this.setState({pin : text})}
-      />
-      <Button
-      onPress = {this.submitPIN}
-      title = 'Submit'
-      />
-
+        <Text style={styles.welcome}>
+          Welcome to React Native!
+        </Text>
+        <Text style={styles.instructions}>
+          To get started, edit index.android.js
+        </Text>
+        <Text style={styles.instructions}>
+          Double tap R on your keyboard to reload,{'\n'}
+          Shake or press menu button for dev menu{'\n'}
+        </Text>
+        <View style={{padding : 10}}>
+        <Button
+          onPress = {this.twitterLogin}
+          title='Sign in with Twitter'
+          color={this.state.buttonColor}
+        />
+        </View>
+        <View style = {{alignItems: 'center', padding : 10}}>
+          <TextInput
+            style={{height: 40, width : 150, borderColor: 'red', borderWidth: 1}}
+            onChangeText={(text) => this.setState({pin : text})}
+          />
+        </View>
+        <View style = {{padding : 10}}>
+        <Button
+          onPress = {this.submitPIN}
+          title = 'Submit'
+        />
+        </View>
       </View>
     );
   }
