@@ -12,7 +12,8 @@ import {
   View,
   Button,
   Linking,
-  TextInput
+  TextInput,
+  BackAndroid
 } from 'react-native';
 
 import './shim.js';
@@ -32,6 +33,13 @@ export default class Root extends Component {
 
     this.twitterLogin = this.twitterLogin.bind(this);
     this.submitPIN = this.submitPIN.bind(this);
+  }
+
+  componentDidMount(){
+    BackAndroid.addEventListener('hardwareBackPress', function(){
+      this.props.navigator.pop();
+      return true;
+    }.bind(this));
   }
 
 

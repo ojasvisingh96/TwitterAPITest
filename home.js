@@ -37,9 +37,22 @@ export default class Home extends Component {
       dataSource: ds.cloneWithRows([])
     }
 
+    let realm = new Realm({
+      schema : [{name : 'Tweet',
+        primaryKey : 'id',
+        properties : {id : 'string', text : 'string'}}]
+    });
+
+    realm.write(() => {
+      realm.deleteAll();
+    });
+
     this.onTweetPress = this.onTweetPress.bind(this);
-    this.onFetchPress = this.onFetchPress.bind(this);
+    this.onFetchYourTimelinePress = this.onFetchYourTimelinePress.bind(this);
+    this.onFetchHomeTimelinePress = this.onFetchHomeTimelinePress.bind(this);
   }
+
+
 
   onTweetPress(){
 
@@ -91,7 +104,7 @@ export default class Home extends Component {
     }.bind(this));
   }
 
-  onFetchPress(){
+  onFetchYourTimelinePress(){
     console.log('checkFetch');
 
     let realm = new Realm({
@@ -99,6 +112,8 @@ export default class Home extends Component {
         primaryKey : 'id',
         properties : {id : 'string', text : 'string'}}]
     });
+
+
 
 
     var NONCE=OAuth.generateOAuthNonce(32);
@@ -185,6 +200,13 @@ export default class Home extends Component {
 
   }
 
+  onFetchHomeTimelinePress(){
+
+    this.props.navigator.push({name : 'timeline', oauth_token : this.props.oauth_token, oauth_token_secret : this.props.oauth_token_secret});
+
+
+  }
+
   render() {
 
 
@@ -204,11 +226,19 @@ export default class Home extends Component {
           onPress = {this.onTweetPress}
         />
         </View>
-        <View style = {{padding : 10}}>
-        <Button
-          title = 'Fetch Timeline'
-          onPress = {this.onFetchPress}
-        />
+        <View style = {{flexDirection : 'row', padding : 10}}>
+          <View style = {{flex: 1, padding : 5}}>
+            <Button
+              title = 'Fetch Your Timeline'
+              onPress = {this.onFetchYourTimelinePress}
+            />
+          </View>
+          <View style = {{flex : 1, padding : 5}}>
+            <Button
+              title = 'Fetch Home Timeline'
+              onPress = {this.onFetchHomeTimelinePress}
+            />
+          </View>
         </View>
       </View>
       <ListView

@@ -16,10 +16,13 @@ import {
 
 import Root from './root';
 import Home from './home';
+import Timeline from './timeline';
 
 const Realm = require('realm');
 
 class TestProject extends Component {
+
+
 
 
 
@@ -35,6 +38,9 @@ class TestProject extends Component {
       console.log(route.oauth_token);
       console.log(route.oauth_token_secret);
       return <Home navigator = {navigator} oauth_token={route.oauth_token} oauth_token_secret={route.oauth_token_secret} screen_name={route.screen_name}/>
+    }
+    else if (route.name=='timeline'){
+      return <Timeline navigator = {navigator} oauth_token={route.oauth_token} oauth_token_secret={route.oauth_token_secret}/>
     }
 
   }
